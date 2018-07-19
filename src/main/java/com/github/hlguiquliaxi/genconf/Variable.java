@@ -4,6 +4,9 @@ import org.json.JSONObject;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashSet;
 import java.util.Map;
 
 public class Variable {
@@ -17,21 +20,24 @@ public class Variable {
         this.jsonStr = jsonStr;
     }
 
+    private String readStringItemsFromJobj(JSONObject jobj, HashSet<String> keyset){
+        String resultStr = null;
+        for(String str: keyset){
+            if(jobj.has(str)) {
+                resultStr = jobj.getString(str);
+                return resultStr;
+            }
+
+        }
+        return null;
+    }
+
     void parseJsonStr() {
         JSONObject jobj = new JSONObject(jsonStr);
-        if (jobj.has("n")) {
-            name = jobj.getString("n");
-        } else {
-            name = null;
-        }
+        name = readStringItemsFromJobj(jobj, new HashSet<String>(Arrays.asList("name", "n")));
 
-        if (jobj.has("d")) {
-            desc = jobj.getString("d");
-        }
-
-        if (jobj.has("dv")) {
-            defaultVal = jobj.getString("dv");
-        }
+        desc = readStringItemsFromJobj(jobj, new HashSet<String>(Arrays.asList("description", "d")));
+        defaultVal = readStringItemsFromJobj(jobj, new HashSet<>(Arrays.asList("default-value", "dv")));
     }
 
     void readValue(Map<String, String> map) {

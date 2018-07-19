@@ -4,6 +4,7 @@ A tool for customize a special configure based on a template and cluster info. T
 What we want is to edit the configure files of the whole cluster hosts at one place easily and conveniently. To do so, we need a template and the cluster-host-conf-info to be prepared in advance. The program generates configure files for each host according to cluster-host-conf-info.
 
 Template format
+
 Templates are processed line by line. Any parts of the template you want to change can be marked by "@{...json...}@". These marks will be replaced by mannual input or other values specified in host-specific-conf. There's a example as follows:
 
       original source:

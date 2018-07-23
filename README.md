@@ -1,5 +1,5 @@
 # customize_configure
-A tool for customize a special configure based on a template and cluster info. This tool was first designed for Cassandra, but now it can also be used for any other line by line customized configure files.
+A tool is used to customize a special configure based on a template and cluster info. This tool was first designed for Cassandra, but now it can also be used for any other line by line customized configure files.
 
 What we want is to edit the configure files of the whole cluster hosts at one place easily and conveniently. To do so, we need a template and the cluster-host-conf-info to be prepared in advance. The program generates configure files for each host according to cluster-host-conf-info.
 
